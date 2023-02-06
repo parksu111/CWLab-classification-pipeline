@@ -154,3 +154,5 @@ cython_debug/
 
 # data folders
 /data/
+
+*.ipynb
