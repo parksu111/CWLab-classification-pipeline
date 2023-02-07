@@ -17,6 +17,7 @@ This is an updated version of [Skynet](https://github.com/parksu111/skynet), the
 
 ## Downloading the necessary files
 1. Download the code in this repository and unzip the folder.
+![alt text](https://github.com/parksu111/CWLab-classification-pipeline/blob/main/img/1_download.png)
 2. Download the pretrained model weights titled 'best.pt' from this [page](https://drive.google.com/drive/folders/1tMhWEJwJuFSEvhqMSzvXg4wtxlxR00qm?usp=sharing).
 
 ## Preparing the conda environment
@@ -24,6 +25,7 @@ If you have been using functions in *sleepy.py*, you probably already have a con
 Here, we will create a new environment to ensure that there are no conflicts between different versions of python modules.
 
 1. Open the 'environment.yml' file in the project folder using a text editor. On the first line, change the name to whatever you wish to name the new environment. The default name is 'skynet'. Be careful not to change anything else and save the file.
+![alt text](https://github.com/parksu111/CWLab-classification-pipeline/blob/main/img/2_env.png)
 2. Open the Anaconda Prompt (or terminal on Mac/Linux).
 3. Navigate to the project folder using the 'cd' command as shown below:
 ```
