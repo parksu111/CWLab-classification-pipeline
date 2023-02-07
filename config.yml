@@ -1,0 +1,3 @@
+directories:
+  recordings: /home/spark/Desktop/skynet/data
+  best_model: /home/spark/Desktop/best.pt
