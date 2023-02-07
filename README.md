@@ -33,24 +33,25 @@ cd $path/to/project/folder
 ```
 Below is an example using my linux machine. I use the 'cd' command to change the terminal's working directory to '/Desktop/skynet'. The 'ls' command lists the files in the current working directory.
 ![alt text](https://github.com/parksu111/CWLab-classification-pipeline/blob/main/img/3_terminal.png)
+
 4. Use the command below to create the new environment. When prompted, type 'y' and press 'enter'.
 ```
 conda env create -f environment.yml
 ```
 Unlike before, all the necessary packages will be automatically installed.
-You can activate the new environment with the following command:
-```
-conda activate $name_of_new_environment
-```
+
 
 ## Running Skynet
 1. Create a folder and place the recordings you wish to classify in that folder. Make sure the folder doesn't contain any other files.
 2. Open the 'config.yml' file in the project folder using a text editor and change the entry of 'recordings' to the path of the folder you made in step 1. Change the entry of 'best_model' to the path of 'best.pt' you downloaded. Don't forget to save the file.
 ![alt text](https://github.com/parksu111/CWLab-classification-pipeline/blob/main/img/4_terminal.png)
-3. Activate the conda environment we installed above.
+3. Activate the conda environment we installed above and change the directory to the project directory.
+```
+conda activate $name_of_new_environment
+```
 4. Use the following command to run skynet and wait.
 ```
-python skynetv2.py
+python skynet_v2.py
 ```
 5. Once the classification is done, new remidx files will automatically be generated and saved in the folders of each recording.
 
