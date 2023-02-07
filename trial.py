@@ -6,7 +6,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
 import sleepy
-from utils import load_yaml, write_remidx
+from utils import load_yaml, new_remidx
 from multiprocessing import Process
 
 import torch
@@ -47,15 +47,6 @@ def make_images(rec,sig,start_ind,end_ind,opath,usetqdm=False):
                 plt.axis('off')
                 fig.savefig(fpath)
                 plt.close(fig)
-
-
-def new_remidx(ppath, rec, M, K):
-    outfile = os.path.join(ppath, rec, 'remidx_' + rec + '.txt')
-    f = open(outfile, 'w')
-    s = ["%d\t%d\n" % (i,j) for (i,j) in zip(M,K)]
-    f.writelines(s)
-    f.close()    
-
 
 '''
 Predict using torch
@@ -219,6 +210,6 @@ if __name__ == '__main__':
         M,K = sleepy.load_stateidx(ppath, rec)
         for ind,x in enumerate(subdf.state.values):
             M[ind] = x
-        new_remidx(M,K,ppath,rec)
+        new_remidx(ppath,rec,M,K)
 
     print('Done!')
