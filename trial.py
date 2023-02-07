@@ -6,13 +6,11 @@ import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
 import sleepy
-import yaml
-from utils import load_yaml
+from utils import load_yaml, write_remidx
 from multiprocessing import Process
 
 import torch
 import torch.nn as nn
-import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
 
 from PIL import Image
@@ -49,6 +47,15 @@ def make_images(rec,sig,start_ind,end_ind,opath,usetqdm=False):
                 plt.axis('off')
                 fig.savefig(fpath)
                 plt.close(fig)
+
+
+def new_remidx(ppath, rec, M, K):
+    outfile = os.path.join(ppath, rec, 'remidx_' + rec + '.txt')
+    f = open(outfile, 'w')
+    s = ["%d\t%d\n" % (i,j) for (i,j) in zip(M,K)]
+    f.writelines(s)
+    f.close()    
+
 
 '''
 Predict using torch
@@ -115,8 +122,8 @@ if __name__ == '__main__':
 
     # Make images directory
     img_path = os.path.join(ppath, 'images')
-    #os.makedirs(img_path, exist_ok=True)
-    '''
+    os.makedirs(img_path, exist_ok=True)
+    
     # Make images
     for rec in recordings:
         if not os.path.isfile(os.path.join(ppath, rec, 'remidx_'+rec+'.txt')):
@@ -145,7 +152,11 @@ if __name__ == '__main__':
         p4.join()
 
         print('Made images for ' + rec)
-    '''
+
+        p1.terminate()
+        p2.terminate()
+        p3.terminate()
+        p4.terminate()
     
     '''
     2. Make Predictions
@@ -196,7 +207,7 @@ if __name__ == '__main__':
 
     decode_dict = {0:3, 1:1, 2:2}
 
-    indices = [int(x.split('_')[1].split('.')[0]) for x in img_names]
+    indices = [int(x.split('_')[-1].split('.')[0]) for x in img_names]
     recs = [x.split('_')[0]+x.split('_')[1] for x in img_names]
     states = [decode_dict[x] for x in y_preds]
 
@@ -208,6 +219,6 @@ if __name__ == '__main__':
         M,K = sleepy.load_stateidx(ppath, rec)
         for ind,x in enumerate(subdf.state.values):
             M[ind] = x
-        sleepy.write_remidx(M,K,ppath,rec,0)
+        new_remidx(M,K,ppath,rec)
 
     print('Done!')
