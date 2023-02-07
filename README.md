@@ -1,10 +1,19 @@
 #  Skynet v2
-This is an updated version of [Skynet](), the automatic sleep state classification pipeline made for Chung-Weber Lab.
+This is an updated version of [Skynet](https://github.com/parksu111/skynet), the automatic sleep state classification pipeline made for Chung-Weber Lab.
 
 ## Table of Contents
-- [Downloading the necessary files]
-- [Preparing the conda environment]
-- [Running Skynet]
+- [Updates](#updates)
+- [Downloading the necessary files](#downloading-the-necessary-files)
+- [Preparing the conda environment](#preparing-the-conda-environment)
+- [Running Skynet](#running-skynet)
+
+## Updates
+**23.02.07**
+* Only the raw trace of the parietal EEG is used for training the model.
+* The multiprocessing module is used when making the images.
+* Unlike Skynet v1, the model is trained on the 6 recordings that were commonly annotated.
+* Slight increase in accuracy: 94.96%
+* Details of the model can be found [here](https://github.com/parksu111/sleep-state).
 
 ## Downloading the necessary files
 1. Download the code in this repository and unzip the folder.
