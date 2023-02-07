@@ -43,6 +43,7 @@ Unlike before, all the necessary packages will be automatically installed.
 
 ## Running Skynet
 1. Create a folder and place the recordings you wish to classify in that folder. Make sure the folder doesn't contain any other files.
+![alt text](https://github.com/parksu111/CWLab-classification-pipeline/blob/main/img/5_recs.png)
 2. Open the 'config.yml' file in the project folder using a text editor and change the entry of 'recordings' to the path of the folder you made in step 1. Change the entry of 'best_model' to the path of 'best.pt' you downloaded. Don't forget to save the file.
 ![alt text](https://github.com/parksu111/CWLab-classification-pipeline/blob/main/img/4_terminal.png)
 3. Activate the conda environment we installed above and change the directory to the project directory.
