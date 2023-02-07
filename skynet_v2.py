@@ -8,6 +8,7 @@ import pandas as pd
 import sleepy
 from utils import load_yaml, new_remidx
 from multiprocessing import Process
+import shutil
 
 import torch
 import torch.nn as nn
@@ -212,4 +213,5 @@ if __name__ == '__main__':
             M[ind] = x
         new_remidx(ppath,rec,M,K)
 
+    shutil.rmtree(img_path)
     print('Done!')
