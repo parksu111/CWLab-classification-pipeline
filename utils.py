@@ -9,7 +9,7 @@ def load_yaml(path):
     with open(path, 'r') as f:
         return yaml.load(f, Loader=yaml.FullLoader)
 
-def new_remidx(M, K, ppath, name) :
+def new_remidx(ppath, name,M,K) :
     outfile = os.path.join(ppath, name, 'remidx_' + name + '.txt')
     f = open(outfile, 'w')
     s = ["%d\t%d\n" % (i,j) for (i,j) in zip(M,K)]
